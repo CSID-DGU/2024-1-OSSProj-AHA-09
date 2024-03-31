@@ -1,2 +1,1 @@
-print("Hello Hyunjong Lee")
-print("My class: OSSProj")
+print("Hello 이현종!")

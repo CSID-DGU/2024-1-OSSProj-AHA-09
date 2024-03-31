@@ -1,10 +1,5 @@
-# 2024-1-OSSProj-Aha-09
+### 2024-1-OSSProj-Aha-09 팀의 리파지토리입니다.
 
-class : OSSProj
 
-name : Hyunjong Lee
-
-Date : 27 mar 2024
-
-Practice : Git
-new branch
+- 팀 구성
+    - (팀장) 이현종
