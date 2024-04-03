@@ -87,7 +87,10 @@
     * 개발환경: 하드웨어 장비  
     * 개발환경: 소프트웨어 툴, 언어 등  
 ※ 충분한 분량으로 개발환경에 대하여 상세하게 작성한다.
-## Tech Stack
+
+<br>
+<br>
+### Tech Stack
 
 <div align=center>
   <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
@@ -105,33 +108,33 @@
 <br>
 <br>
 
-### OS
+### 개발 환경
+
+#### OS
 - Microsoft Windows OS
 
-### Code editor
+#### Code editor
 - VSCode
 
-### Language
+#### Language
 - Python, JavaScript
 
-### Collaboration
+#### Collaboration
 - Notion, Github, Slack, Figma
 
-### License
+#### License
 - MIT License
 
-### Backend
+#### Backend
 - django 23.3.1
 - django-restframework 23.3.1
 - MySQL 7.5
 
-### Frontend
+#### Frontend
 - HTML5, CSS, JavaScript
 - React v18.2.0
 - Visual Studio Code v1.78.2
 <br>
-
-## 개발 환경
 
 ### 2.4  기대효과  
 
