@@ -86,7 +86,52 @@
 * 최종 설계 결과물의 구현 수단
     * 개발환경: 하드웨어 장비  
     * 개발환경: 소프트웨어 툴, 언어 등  
-※ 충분한 분량으로 개발환경에 대하여 상세하게 작성한다. 
+※ 충분한 분량으로 개발환경에 대하여 상세하게 작성한다.
+## Tech Stack
+
+<div align=center>
+  <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
+  <img src="https://img.shields.io/badge/css3-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+  <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+  <img src="https://img.shields.io/badge/django-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">
+  <img src="https://img.shields.io/badge/djangorestframework-FF9900?style=for-the-badge&logo=amazon ec2&logoColor=white">
+  <br>
+  <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black">
+  <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
+  <img src="https://img.shields.io/badge/ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white">
+  <img src="https://img.shields.io/badge/VsCode-007ACC?style=for-the-badge&logo=Visual Studio Code&logoColor=white">
+  <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+</div>
+<br>
+<br>
+
+### OS
+- Microsoft Windows OS
+
+### Code editor
+- VSCode
+
+### Language
+- Python, JavaScript
+
+### Collaboration
+- Notion, Github, Slack, Figma
+
+### License
+- MIT License
+
+### Backend
+- django 23.3.1
+- django-restframework 23.3.1
+- MySQL 7.5
+
+### Frontend
+- HTML5, CSS, JavaScript
+- React v18.2.0
+- Visual Studio Code v1.78.2
+<br>
+
+## 개발 환경
 
 ### 2.4  기대효과  
 
