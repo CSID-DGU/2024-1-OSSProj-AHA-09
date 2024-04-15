@@ -1,7 +1,8 @@
 # A4.1 프로젝트 범위 / 일정 / 이슈 관리  
 
 ## 범위/일정 관리  
-![Uploading image.png…]()
+![image](https://github.com/gunheee-leee/OSSProjLGH/assets/143998370/14217958-cd07-40be-b1df-fc1cc1f6311c)
+
 
 
 ## 이슈 관리  
