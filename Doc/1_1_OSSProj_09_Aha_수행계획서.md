@@ -74,7 +74,7 @@
     * 위치를 위도-경도로 변환하여, 기상 API를 호출하는 것으로 해당 지역의 기상 정보를 얻음
     * 기상 정보를 Machine Learning 모델에 입력하여 구한 예측 생산량을 유저에게 반환
 
-    * 시스템 액티비티 다이어그램
+* 시스템 액티비티 다이어그램
     <img width="550" alt="image" src="https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/assets/137899379/b90389ec-9a4a-41a2-b8c4-2408b17cbb04">
            
 #### (3) 대안 도출 및 구현 계획  
