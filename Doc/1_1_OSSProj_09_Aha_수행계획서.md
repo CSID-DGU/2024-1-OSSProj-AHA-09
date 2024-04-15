@@ -105,9 +105,6 @@
   <img src="https://img.shields.io/badge/django-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">
   <img src="https://img.shields.io/badge/djangorestframework-FF9900?style=for-the-badge&logo=amazon ec2&logoColor=white">
   <br>
-  <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black">
-  <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
-  <img src="https://img.shields.io/badge/ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white">
   <img src="https://img.shields.io/badge/VsCode-007ACC?style=for-the-badge&logo=Visual Studio Code&logoColor=white">
   <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
 </div>
@@ -147,8 +144,8 @@
 - 사용자는 생산량 예측 결과를 사용자 친화적인 인터페이스로로 쉽게 조회할 수 있음
 
 ### 2.5  추진일정  
-* 세부 작업에 대한 간트챠트  
-* 세부 작업 별 구성원의 역할
+![image](https://github.com/gunheee-leee/OSSProjLGH/assets/143998370/9ebd7741-4a4d-41ea-9593-b5383367edf7)
+
 
 ### 2.6 참고문헌 
 * [1] 김세원, 김영희. (2021). 작물 생산량 예측을 위한 머신러닝 기법 활용 연구. 한국산학기술학회 논문지, 22(7), 403-408, 10.5762/KAIS.2021.22.7.403
