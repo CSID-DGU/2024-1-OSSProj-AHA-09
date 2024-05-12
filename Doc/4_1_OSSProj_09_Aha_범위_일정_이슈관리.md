@@ -1,9 +1,7 @@
 # A4.1 프로젝트 범위 / 일정 / 이슈 관리  
 
 ## 범위/일정 관리  
-![image](https://github.com/gunheee-leee/OSSProjLGH/assets/143998370/14217958-cd07-40be-b1df-fc1cc1f6311c)
-미국 -> 한국 웹서비스 제공 변화에 따른 데이터 수집 기한 증가 간트 차트 업데이트
-![image](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/assets/143998370/6fb69544-f8b1-4308-b92e-5c4bcc0af661)
+![image](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/assets/137899379/fe092e63-6dde-4b25-9fb2-4519e4da3f0d)
 
 
 
