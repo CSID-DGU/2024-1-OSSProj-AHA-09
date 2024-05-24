@@ -251,8 +251,14 @@
 
         map.on('click', function (e) {
             var latlng = e.latlng;
-            console.log('Clicked location:', latlng);
-            alert('위도: ' + latlng.lat + ', 경도: ' + latlng.lng);
+            var latitude = latlng.lat;
+            var longitude = latlng.lng;
+
+            // mapPrice.html을 위한 URL 생성
+            var mapPriceUrl = "mapPrice.html?lat=" + latitude + "&lng=" + longitude;
+
+            // 새 창에서 mapPrice.html 열기
+            window.open(mapPriceUrl, '_blank');
         });
     </script>
 </body>
