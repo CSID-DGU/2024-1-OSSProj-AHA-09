@@ -257,8 +257,13 @@
             // mapPrice.html을 위한 URL 생성
             var mapPriceUrl = "mapPrice.html?lat=" + latitude + "&lng=" + longitude;
 
-            // 새 창에서 mapPrice.html 열기
-            window.open(mapPriceUrl, '_blank');
+            // 새 창으로 mapPrice.html 열기 (팝업 창으로 열기)
+            var popupWindow = window.open(mapPriceUrl, 'MapPricePopup', 'width=600,height=400');
+            if (popupWindow) {
+                popupWindow.focus();
+            } else {
+                alert('팝업 창이 차단되었습니다. 팝업 차단을 해제하고 다시 시도해주세요.');
+            }
         });
     </script>
 </body>
