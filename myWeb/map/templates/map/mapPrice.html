@@ -1,5 +1,7 @@
+<!-- mapPrice.html -->
 
 <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,21 +9,7 @@
 </head>
 <body>
     <div id="mapContainer">
-        <!-- Map image will be displayed here -->
+        <img src="{{ image_url }}" alt="Map Image">
     </div>
-
-    <script>
-        // URL에서 위도와 경도 파라미터 가져오기
-        const urlParams = new URLSearchParams(window.location.search);
-        const latitude = urlParams.get('lat');
-        const longitude = urlParams.get('lng');
-
-        // 이미지 생성
-        var mapContainer = document.getElementById("mapContainer");
-        var imageUrl = "http://api.vworld.kr/ned/wms/getIndvdLandPriceWMS?apiKey=E739356B-02E6-3D72-BF19-C82D8E68E834&domain=localhost&layers=dt_d150&crs=EPSG:4326&bbox=" + latitude + "," + longitude + "," + (parseFloat(latitude) + 0.002) + "," + (parseFloat(longitude) + 0.004) + "&width=500&height=300&format=image/png&transparent=false&bgcolor=0xFFFFFF&exceptions=blank";
-        
-        // 이미지 표시
-        mapContainer.innerHTML = '<img src="' + imageUrl + '" alt="Map Image">';
-    </script>
 </body>
 </html>

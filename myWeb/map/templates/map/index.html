@@ -92,10 +92,17 @@
     <div class="sidebar">
         <div class="crop-group">
             <label>작물 선택</label>
-            <button image id="rice" onclick="selectCrop('rice')">쌀</button>
+            <button id="potato" onclick="selectCrop('potato')">감자</button>
+            <button id="swpotato" onclick="selectCrop('swpotato')">고구마</button>
+            <button id="papper" onclick="selectCrop('papper')">고추</button>
+            <button id="leek" onclick="selectCrop('leek')">대파</button>
+            <button id="rice" onclick="selectCrop('rice')">벼</button>
+            <button id="peach" onclick="selectCrop('peach')">복숭아</button>
             <button id="apple" onclick="selectCrop('apple')">사과</button>
+            <button id="onion" onclick="selectCrop('onion')">양파</button>
             <button id="corn" onclick="selectCrop('corn')">옥수수</button>
             <button id="soybean" onclick="selectCrop('soybean')">콩</button>
+            <button id="grape" onclick="selectCrop('grape')">포도</button>
         </div>
         <div class="year-group">
             <label>연도 선택</label>
@@ -110,10 +117,24 @@
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
     <script>
-        function selectCrop(crop) {
+        let currentYear = 2025;
+        const minYear = 2025;
+        const maxYear = 2055;
+        const yearDisplay = document.getElementById('year-display');
+        document.getElementById('rice').classList.add('selected'); // 초기 상태로 쌀 버튼 선택
+        let selectedCrop = '벼'
+        var geojsonURL = 'https://raw.githubusercontent.com/southkorea/southkorea-maps/master/kostat/2013/json/skorea_provinces_geo_simple.json';
+
+        /*********************
+        * 연도, 작물 선택 창  *
+        **********************/
+        function selectCrop(cropId) {
+            selectedCrop = document.getElementById(cropId).innerText;
+            changeYear(minYear-currentYear);
+
             const buttons = document.querySelectorAll('.crop-group button');
             buttons.forEach(button => {
-                if (button.id === crop) {
+                if (button.id === cropId) {
                     button.classList.add('selected');
                 } else {
                     button.classList.remove('selected');
@@ -121,141 +142,122 @@
             });
         }
 
-        // 초기 상태로 쌀 버튼 선택
-        document.getElementById('rice').classList.add('selected');
-
-        let currentYear = 2025;
-        const minYear = 2025;
-        const maxYear = 2055;
-        const yearDisplay = document.getElementById('year-display');
-
         function changeYear(direction) {
             const newYear = currentYear + direction;
             if (newYear >= minYear && newYear <= maxYear) {
                 currentYear = newYear;
                 yearDisplay.textContent = currentYear;
             }
+
+            sendData({ crop: selectedCrop, year: currentYear });
         }
 
-        // Leaflet을 사용하여 지도 표시
-        var map = L.map('map').setView([37.5642135, 127.0016985], 7);
+        function sendData(data) {
+            console.log('Sending data:', data);
 
+            fetch('/select_crop', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => response.json())
+            .then(data => {
+                setMap(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        /*********************
+        *      지도 표시      *
+        **********************/
+        var map = L.map('map').setView([37.5642135, 127.0016985], 7);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
         }).addTo(map);
+        var geojsonLayer = null;
+        sendData({ crop: selectedCrop, year: currentYear});
 
-        const regionColors = {
-            "서울특별시": "#FF0000",
-            "부산광역시": "#00FF00",
-            "대구광역시": "#0000FF",
-            "인천광역시": "#FFFF00",
-            "광주광역시": "#FF00FF",
-            "대전광역시": "#00FFFF",
-            "울산광역시": "#800000",
-            "세종특별자치시": "#808000",
-            "경기도": "#008000",
-            "강원도": "#800080",
-            "충청북도": "#008080",
-            "충청남도": "#000080",
-            "전라북도": "#FFA500",
-            "전라남도": "#A52A2A",
-            "경상북도": "#DEB887",
-            "경상남도": "#5F9EA0",
-            "제주특별자치도": "#D2691E"
-        };
+        function setMap(regionProductionData){
+            //이전 레이어 지우기
+            if (geojsonLayer) {
+                map.removeLayer(geojsonLayer);
+            }
 
-        // GeoJSON 데이터를 스타일링하는 함수
-        function style(feature) {
-            return {
-                fillColor: regionColors[feature.properties.name] || "#FFFFFF", // 기본 색상을 흰색으로 설정
-                weight: 2,
-                opacity: 1,
-                color: 'white',
-                dashArray: '3',
-                fillOpacity: 0.7
-            };
-        }
-
-        // 대한민국 도 단위의 행정구역 GeoJSON 데이터
-        var geojsonURL = 'https://raw.githubusercontent.com/southkorea/southkorea-maps/master/kostat/2013/json/skorea_provinces_geo_simple.json';
-
-        fetch(geojsonURL)
-            .then(response => response.json())
-            .then(data => {
-                // 생산량 데이터를 가져온다고 가정
-                regionProductionData = {
-                    "서울특별시": 10000, "부산광역시": 1500, "대전광역시": 5000, "광주광역시": 3000, "강원도": 8000,
-                    "인천광역시": 1500, "전라북도": 2500, "전라남도": 3500, "충청북도": 6000, "충청남도": 6500, "대구광역시": 4500, "경상남도": 7000,
-                    "경상북도": 7500, "경기도": 5000, "제주특별자치도": 4000, "울산광역시": 3000, "세종특별자치시": 6000
-                };
-
-                // 생산량에 따라 색상을 계산하는 함수
-                function calculateColor(region) {
-                    // 생산량 데이터가 없는 경우 기본 색상 반환
-                    if (!regionProductionData[region]) {
-                        return "#FFFFFF"; // 기본 색상을 흰색으로 설정
-                    }
-                    // 생산량에 따라 색상 계산
-                    const maxProduction = Math.max(...Object.values(regionProductionData));
-                    const minProduction = Math.min(...Object.values(regionProductionData));
-                    const production = regionProductionData[region];
-                    const scaledValue = (production - minProduction) / (maxProduction - minProduction);
-
-                    // 예시: 하얀색(255, 255, 255)에서 초록색(0, 255, 0)으로 변화하는 컬러 맵 사용
-                    const red = Math.round(255 * (1 - scaledValue)); // 적게 생산할수록 빨간색이 많아짐
-                    const green = 255; // 녹색은 항상 최대
-                    const blue = Math.round(255 * (1 - scaledValue)); // 적게 생산할수록 파란색이 많아짐
-
-                    const opacity = 0.3 + (0.7 * scaledValue);
-
-                    return `rgba(${red}, ${green}, ${blue}, ${opacity})`;
-                }
-
-                // GeoJSON 레이어 생성
-                var geojsonLayer = L.geoJSON(data, {
-                    style: function (feature) {
-                        return {
-                            fillColor: calculateColor(feature.properties.name),
-                            weight: 2,
-                            opacity: 1,
-                            color: 'white',
-                            dashArray: '3',
-                            fillOpacity: 0.7
-                        };
-                    },
-                    onEachFeature: function (feature, layer) {
-                        // 마우스 이벤트를 이용한 스타일 변경
-                        layer.on({
-                            mouseover: function () {
-                                layer.setStyle({
-                                    weight: 3,
-                                    color: '#666',
-                                    dashArray: '',
-                                    fillOpacity: 1
-                                });
-                            },
-                            mouseout: function () {
-                                layer.setStyle({
-                                    fillColor: calculateColor(feature.properties.name),
-                                    weight: 2,
-                                    color: 'white',
-                                    dashArray: '3',
-                                    fillOpacity: 0.7
-                                });
-                            }
-                        });
-                    }
-                }).addTo(map);
+            let sortedRegions = Object.entries(regionProductionData).sort((a, b) => b[1].prediction - a[1].prediction);
+            let rankMap = {};
+            sortedRegions.forEach((region, index) => {
+                rankMap[region[1].region] = index + 1; // 인덱스는 0부터 시작하므로 +1 해줌
             });
 
+            function calculateColor(region) {
+                if(region == '제주특별자치도') region = '제주도'
+                let rank = rankMap[region];
+                let totalRegions = sortedRegions.length;
+                let scaledValue = rank / totalRegions;
+
+                // 예시: 하얀색(255, 255, 255)에서 초록색(0, 255, 0)으로 변화하는 컬러 맵 사용
+                let green = Math.round(255 * (1 - scaledValue)); // 적게 생산할수록 빨간색이 많아짐
+                let red = 255; // 녹색은 항상 최대
+                let blue = Math.round(255 * (1 - scaledValue)); // 적게 생산할수록 파란색이 많아짐
+                return `rgb(${red}, ${green}, ${blue})`;
+            }
+
+            fetch(geojsonURL)
+                .then(response => response.json())
+                .then(data => {
+                    geojsonLayer = L.geoJSON(data, {
+                        style: function (feature) {
+                            return {
+                                fillColor: calculateColor(feature.properties.name),
+                                weight: 1,
+                                opacity: 1,
+                                color: 'white',
+                                dashArray: '3',
+                                fillOpacity: 0.9
+                            };
+                        },
+                        onEachFeature: function (feature, layer) {
+                            // 마우스 이벤트를 이용한 스타일 변경
+                            layer.on({
+                                mouseover: function () {
+                                    layer.setStyle({
+                                        weight: 2,
+                                        color: '#666',
+                                        dashArray: '',
+                                        fillOpacity: 0.2
+                                    });
+                                },
+                                mouseout: function () {
+                                    layer.setStyle({
+                                        fillColor: calculateColor(feature.properties.name),
+                                        weight: 1,
+                                        color: 'white',
+                                        dashArray: '3',
+                                        fillOpacity: 0.9
+                                    });
+                                }
+                            });
+                        }
+                    }).addTo(map);
+
+                });
+        }
+
+        /*********************
+        *    지도 공시지가    *
+        **********************/
         map.on('click', function (e) {
             var latlng = e.latlng;
             var latitude = latlng.lat;
             var longitude = latlng.lng;
 
             // mapPrice.html을 위한 URL 생성
-            var mapPriceUrl = "mapPrice.html?lat=" + latitude + "&lng=" + longitude;
+            const mapPriceUrl = '/mapPrice/?lat=' + latitude + '&lng=' + longitude;
 
             // 새 창으로 mapPrice.html 열기 (팝업 창으로 열기)
             var popupWindow = window.open(mapPriceUrl, 'MapPricePopup', 'width=600,height=400');
