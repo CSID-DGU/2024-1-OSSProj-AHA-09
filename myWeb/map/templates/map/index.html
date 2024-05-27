@@ -7,17 +7,53 @@
     <title>Map</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <style>
+        .top-bar {
+            width: 100%;
+            height: 50px;
+            background-color: #333;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        .top-bar h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .top-bar nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .top-bar nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .content {
+            display: flex;
+            flex: 1;
+            height: calc(100vh - 50px); /* Adjust height to account for the top bar */
+        }
+
         body {
             display: flex;
+            flex-direction: column;
             margin: 0;
             height: 100vh;
         }
 
         .sidebar {
             width: 250px;
-            padding: 20px;
+            height: 100%;
+            padding: 15px;
             background-color: #f4f4f4;
             border-right: 1px solid #ddd;
+            box-sizing: border-box;
         }
 
         .main-content {
@@ -25,6 +61,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         .crop-group,
@@ -34,14 +72,22 @@
 
         label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom:10px;
+            font-weight: bold;
+        }
+
+        .crop-group-container {
+            width: 100%;
+            height: 55%;
+            overflow-y: scroll;
+            border: 1px solid #ccc;
         }
 
         .crop-group button {
             display: block;
             width: 100%;
             padding: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             box-sizing: border-box;
             border: 1px solid #ddd;
             background-color: #fff;
@@ -57,10 +103,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-        }
-
-        .year-group label {
-            margin-bottom: 10px;
         }
 
         .year-controls {
@@ -89,31 +131,45 @@
 </head>
 
 <body>
-    <div class="sidebar">
-        <div class="crop-group">
-            <label>작물 선택</label>
-            <button id="potato" onclick="selectCrop('potato')">감자</button>
-            <button id="swpotato" onclick="selectCrop('swpotato')">고구마</button>
-            <button id="papper" onclick="selectCrop('papper')">고추</button>
-            <button id="leek" onclick="selectCrop('leek')">대파</button>
-            <button id="rice" onclick="selectCrop('rice')">벼</button>
-            <button id="peach" onclick="selectCrop('peach')">복숭아</button>
-            <button id="apple" onclick="selectCrop('apple')">사과</button>
-            <button id="onion" onclick="selectCrop('onion')">양파</button>
-            <button id="corn" onclick="selectCrop('corn')">옥수수</button>
-            <button id="soybean" onclick="selectCrop('soybean')">콩</button>
-            <button id="grape" onclick="selectCrop('grape')">포도</button>
-        </div>
-        <div class="year-group">
-            <label>연도 선택</label>
-            <div class="year-controls">
-                <button onclick="changeYear(-1)">&#9664;</button>
-                <div class="year-display" id="year-display">2025</div>
-                <button onclick="changeYear(1)">&#9654;</button>
+    <div class="top-bar">
+        <h1> 농작물 생산 트랜드</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+    </div>
+    <div class="content">
+        <div class="sidebar">
+            <label style="margin-left: 10px;">작물 선택</label>
+            <div class="crop-group-container">
+                <div class="crop-group">
+                    <button id="potato" onclick="selectCrop('potato')">감자</button>
+                    <button id="swpotato" onclick="selectCrop('swpotato')">고구마</button>
+                    <button id="papper" onclick="selectCrop('papper')">고추</button>
+                    <button id="leek" onclick="selectCrop('leek')">대파</button>
+                    <button id="rice" onclick="selectCrop('rice')">벼</button>
+                    <button id="peach" onclick="selectCrop('peach')">복숭아</button>
+                    <button id="apple" onclick="selectCrop('apple')">사과</button>
+                    <button id="onion" onclick="selectCrop('onion')">양파</button>
+                    <button id="corn" onclick="selectCrop('corn')">옥수수</button>
+                    <button id="soybean" onclick="selectCrop('soybean')">콩</button>
+                    <button id="grape" onclick="selectCrop('grape')">포도</button>
+                </div>
+            </div>
+            <div class="year-group">
+                <label style="margin-top: 15px;">연도 선택</label>
+                <div class="year-controls">
+                    <button onclick="changeYear(-1)">&#9664;</button>
+                    <div class="year-display" id="year-display">2025</div>
+                    <button onclick="changeYear(1)">&#9654;</button>
+                </div>
             </div>
         </div>
+        <div class="main-content" id="map"></div>
     </div>
-    <div class="main-content" id="map"></div>
+
+    <script src='https://unpkg.com/@turf/turf@6/turf.min.js'></script>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
     <script>
@@ -153,7 +209,7 @@
         }
 
         function sendData(data) {
-            console.log('Sending data:', data);
+            //console.log('Sending data:', data);
 
             fetch('/select_crop', {
                 method: 'POST',
@@ -179,7 +235,9 @@
             maxZoom: 19,
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
         }).addTo(map);
-        var geojsonLayer = null;
+        var geojsonLayer = null; // 생산량 표시 레이어
+        var korjeojson = null; // 한국 영역 확인
+
         sendData({ crop: selectedCrop, year: currentYear});
 
         function setMap(regionProductionData){
@@ -210,6 +268,7 @@
             fetch(geojsonURL)
                 .then(response => response.json())
                 .then(data => {
+                    korjeojson = data;
                     geojsonLayer = L.geoJSON(data, {
                         style: function (feature) {
                             return {
@@ -251,22 +310,38 @@
         /*********************
         *    지도 공시지가    *
         **********************/
+        function isPointInKorea(latlng) {
+            var point = {
+                "type": "Point",
+                "coordinates": [latlng.lng, latlng.lat]
+            };
+            var contains = false;
+            L.geoJSON(korjeojson, {
+                onEachFeature: function (feature, layer) {
+                    if (turf.inside(point, feature)) {
+                        contains = true;
+                    }
+                }
+            });
+            //console.log(contains);
+            return contains;
+        }
+
         map.on('click', function (e) {
             var latlng = e.latlng;
-            var latitude = latlng.lat;
-            var longitude = latlng.lng;
-
-            // mapPrice.html을 위한 URL 생성
-            const mapPriceUrl = '/mapPrice/?lat=' + latitude + '&lng=' + longitude;
-
-            // 새 창으로 mapPrice.html 열기 (팝업 창으로 열기)
-            var popupWindow = window.open(mapPriceUrl, 'MapPricePopup', 'width=600,height=400');
-            if (popupWindow) {
-                popupWindow.focus();
-            } else {
-                alert('팝업 창이 차단되었습니다. 팝업 차단을 해제하고 다시 시도해주세요.');
+            if (isPointInKorea(latlng)) {
+                var latitude = latlng.lat;
+                var longitude = latlng.lng;
+                const mapPriceUrl = '/mapPrice/?lat=' + latitude + '&lng=' + longitude;
+                var popupWindow = window.open(mapPriceUrl, 'MapPricePopup', 'width=600,height=400');
+                if (popupWindow) {
+                    popupWindow.focus();
+                } else {
+                    alert('팝업 창이 차단되었습니다. 팝업 차단을 해제하고 다시 시도해주세요.');
+                }
             }
         });
+
     </script>
 </body>
 
