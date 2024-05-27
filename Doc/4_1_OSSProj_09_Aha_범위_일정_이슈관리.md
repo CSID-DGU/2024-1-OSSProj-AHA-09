@@ -1,7 +1,7 @@
 # A4.1 프로젝트 범위 / 일정 / 이슈 관리  
 
 ## 범위/일정 관리  
-![image](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/assets/137899379/fe092e63-6dde-4b25-9fb2-4519e4da3f0d)
+![4_4_OSSProj_09_Aha_일정관리](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/assets/162420581/de36f966-0965-4482-96e8-da2d57ddd564)
 
 
 
