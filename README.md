@@ -43,7 +43,6 @@
 - 농업을 처음 시작하는 사용자는 큰 시간과 비용을 들이지 않고 최적의 입지를 선정할 수 있음
 - 농업에 종사중인 사용자는 생산량 예측을 통해 효율적인 공급, 재고 관리가 가능해 짐
 - 사용자는 생산량 예측 결과를 사용자 친화적인 인터페이스로로 쉽게 조회할 수 있음
-- *간단한 그림 또는 사진을 포함하여 작성 가능*  
 
 ### 2. 프로젝트 수행 내용  
 
@@ -59,16 +58,28 @@
 
 #### 3.1 프로젝트 OSS 구성  
 
-- *프로젝트 오픈소스 구성내역과 상세안내자료 링크를 제시*  
+**오픈데이터**
+- 기상청 기후변화아 시나리오에 따른 기상정보 예측 데이터
+- [기상청 기후정보](http://www.climate.go.kr/home/CCS/contents_2021/35_download.php)
+  
+**오픈소스**
+- v-world 공간 정보지도 공시지가 api
+- [V-WORLD](https://www.vworld.kr/dtna/dtna_apiSvcFc_s001.do?apiNum=23)
 
 #### 3.2 프로젝트 주요 문서 
 
-- *프로젝트 주요 문서 명과 링크를 제시*  
+- [수행계획서](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/blob/main/Doc/1_1_OSSProj_09_Aha_수행계획서.md)
+- [중간보고서](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/blob/main/Doc/2_1_OSSProj_09_Aha_중간보고서.md)
+- [최종보고서](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/blob/main/Doc/3_1_OSSProj_09_Aha_최종보고서.md)
+- [회의록](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/blob/main/Doc/4_2_OSSProj_09_Aha_회의록.md)
+- [이슈관리](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/issues?q=is%3Aissue+is%3Aclosed)
+
 
 #### 3.3 참고자료  
 
-- *프로젝트 개발 중 참고한 주요 자료와 링크를 제시*   
-
+* 날씨마루 : https://bd.kma.go.kr/kma2020/fs/productionSelect1.do?pageNum=5&menuCd=F050102000
+* USDA : https://www.nass.usda.gov/Charts_and_Maps/Crops_County/cr-pr.php
+  
 ## Commit Convention
 -   feat : 새로운 기능 추가
 -   fix : 버그 수정
