@@ -27,12 +27,50 @@ def select_crop(request):
         return JsonResponse({'error': 'Invalid request method'}, status=400)
     
 def map_price(request):
-    # URL에서 위도와 경도 파라미터 가져오기
-    latitude = request.GET.get('lat')
-    longitude = request.GET.get('lng')
+    # URL에서 지역, 작물, 연도 파라미터 가져오기
+    region = request.GET.get('region')
+    crop = request.GET.get('crop')
+    year = request.GET.get('year')
+
+    # URL 매개변수 로그로 출력
+    print(f"Region: {region}, Crop: {crop}, Year: {year}")
+
+    # 데이터베이스에서 생산량 값 조회
+    try:
+        production_data = data_prediction.objects.get(region=region, crop=crop, year=year)
+        print("Production Data:", production_data)  # 데이터 확인을 위한 출력
+        prediction = production_data.prediction
+        region_name = production_data.region
+    except data_prediction.DoesNotExist:
+        prediction = "No data available"
+        region_name = "Unknown"
 
     # 이미지 URL 생성
+    latitude = request.GET.get('lat')
+    longitude = request.GET.get('lng')
     image_url = f"http://api.vworld.kr/ned/wms/getIndvdLandPriceWMS?apiKey=E739356B-02E6-3D72-BF19-C82D8E68E834&domain=localhost&layers=dt_d150&crs=EPSG:4326&bbox={latitude},{longitude},{float(latitude) + 0.002},{float(longitude) + 0.004}&width=500&height=300&format=image/png&transparent=false&bgcolor=0xFFFFFF&exceptions=blank"
-    
+
     # HTML 템플릿 렌더링
-    return render(request, 'map/mapPrice.html', {'image_url': image_url})
+    return render(request, 'map/mapPrice.html', {
+        'image_url': image_url,
+        'region': region_name,
+        'crop': crop,
+        'year': year,
+        'prediction': prediction
+    })
+def identify_location(request):
+    if request.method == 'GET':
+        # 클라이언트로부터 위도와 경도 값을 받음
+        latitude = request.GET.get('latitude')
+        longitude = request.GET.get('longitude')
+        
+        # 여기서 실제로 위도와 경도를 기반으로 어느 지역인지 식별하는 로직을 구현하고
+        # 해당 지역을 JSON 형식으로 응답합니다.
+        # 이 예시에서는 임시로 "Unknown" 지역을 응답합니다.
+        region = "Unknown"
+        
+        # 식별된 지역 정보를 JSON 형식으로 응답
+        return JsonResponse({'region': region})
+    else:
+        # 잘못된 요청 방식에 대한 오류 응답
+        return JsonResponse({'error': 'Invalid request method'}, status=400)

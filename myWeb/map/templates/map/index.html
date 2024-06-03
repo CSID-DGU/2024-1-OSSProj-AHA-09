@@ -310,35 +310,48 @@
         /*********************
         *    지도 공시지가    *
         **********************/
-        function isPointInKorea(latlng) {
-            var point = {
-                "type": "Point",
-                "coordinates": [latlng.lng, latlng.lat]
-            };
-            var contains = false;
-            L.geoJSON(korjeojson, {
-                onEachFeature: function (feature, layer) {
-                    if (turf.inside(point, feature)) {
-                        contains = true;
-                    }
-                }
-            });
-            //console.log(contains);
-            return contains;
-        }
 
         map.on('click', function (e) {
             var latlng = e.latlng;
-            if (isPointInKorea(latlng)) {
-                var latitude = latlng.lat;
-                var longitude = latlng.lng;
-                const mapPriceUrl = '/mapPrice/?lat=' + latitude + '&lng=' + longitude;
-                var popupWindow = window.open(mapPriceUrl, 'MapPricePopup', 'width=600,height=400');
-                if (popupWindow) {
-                    popupWindow.focus();
-                } else {
-                    alert('팝업 창이 차단되었습니다. 팝업 차단을 해제하고 다시 시도해주세요.');
-                }
+            var latitude = latlng.lat;
+            var longitude = latlng.lng;
+
+            // GeoJSON 데이터에서 클릭한 위치와 가장 가까운 지역을 찾아내는 함수
+            function findNearestRegion(lat, lng) {
+                var nearestRegion = "Unknown"; // 기본값은 "Unknown"
+                var minDistance = Infinity;
+
+                // GeoJSON 데이터를 순회하며 가장 가까운 지역을 찾음
+                geojsonLayer.eachLayer(function (layer) {
+                    var regionName = layer.feature.properties.name; // 지역 이름
+                    var regionLatLng = layer.getBounds().getCenter(); // 지역의 중심점 좌표
+                    var distance = Math.sqrt(Math.pow(lat - regionLatLng.lat, 2) + Math.pow(lng - regionLatLng.lng, 2)); // 거리 계산
+
+                    // 현재까지의 최소 거리보다 더 작은 거리를 가지는 경우 최소 거리와 해당 지역을 업데이트
+                    if (distance < minDistance) {
+                        minDistance = distance;
+                        nearestRegion = regionName;
+                    }
+                });
+
+                return nearestRegion;
+            }
+
+            // 클릭한 위치에 해당하는 지역 식별
+            var region = findNearestRegion(latitude, longitude);
+
+            // 선택된 지역, 작물, 연도 정보를 URL에 추가
+            const crop = selectedCrop;
+            const year = currentYear;
+
+            const mapPriceUrl = `/mapPrice/?region=${region}&crop=${crop}&year=${year}&lat=${latitude}&lng=${longitude}`;
+
+            // 새 창으로 mapPrice.html 열기 (팝업 창으로 열기)
+            var popupWindow = window.open(mapPriceUrl, 'MapPricePopup', 'width=600,height=400');
+            if (popupWindow) {
+                popupWindow.focus();
+            } else {
+                alert('팝업 창이 차단되었습니다. 팝업 차단을 해제하고 다시 시도해주세요.');
             }
         });
 
