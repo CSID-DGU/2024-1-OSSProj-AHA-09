@@ -310,11 +310,28 @@
         /*********************
         *    지도 공시지가    *
         **********************/
+        function isPointInKorea(latlng) {
+            var point = {
+                "type": "Point",
+                "coordinates": [latlng.lng, latlng.lat]
+            };
+            var contains = false;
+            L.geoJSON(korjeojson, {
+                onEachFeature: function (feature, layer) {
+                    if (turf.inside(point, feature)) {
+                        contains = true;
+                    }
+                }
+            });
+            return contains;
+        }
 
         map.on('click', function (e) {
             var latlng = e.latlng;
             var latitude = latlng.lat;
             var longitude = latlng.lng;
+
+            if (!isPointInKorea(latlng)) return;
 
             // GeoJSON 데이터에서 클릭한 위치와 가장 가까운 지역을 찾아내는 함수
             function findNearestRegion(lat, lng) {
