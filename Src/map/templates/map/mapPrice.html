@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map Price Image</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column; /* 세로로 배치 */
+            align-items: center; /* 가운데 정렬 */
+            height: 100%; /* 부모 요소인 body의 높이를 사용 */
+        }
+
+        .info-container {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 500px; /* 너비 500px로 고정 */
+            height: 200px; /* 높이 200px로 고정 */
+            margin-bottom: 20px; /* 하단 여백 추가 */
+        }
+
+        .info-container p {
+            margin: 5px 0; /* 각 정보 사이 간격 조정 */
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #333; /* 라벨 색상 변경 */
+        }
+
+        .info-value {
+            color: #555;
+            font-size: 16px; /* 글꼴 크기 설정 */
+        }
+
+        #mapContainer {
+            width: 500px; /* 너비 500px로 고정 */
+            height: 500px; /* 높이 500px로 고정 */
+            overflow: hidden; /* 이미지가 컨테이너를 넘어가지 않도록 함 */
+        }
+
+        #mapContainer img {
+            max-width: 100%;
+            height: auto;
+            width: 100%; /* 이미지가 컨테이너 내에 꽉 차도록 함 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="info-container">
+            <p><span class="info-label">연도:</span> <span class="info-value"><b>{{ year }}</b></span></p>
+            <p><span class="info-label">지역:</span> <span class="info-value"><b>{{ region }}</b></span></p>
+            <p><span class="info-label">작물:</span> <span class="info-value"><b>{{ crop }}</b></span></p>
+            <p><span class="info-label">생산량:</span> <span class="info-value"><b>{{ prediction }} (t/10a)</b></span></p>
+        </div>
+        <div id="mapContainer">
+            <img src="{{ image_url }}" alt="Map Image">
+        </div>
+    </div>
+</body>
+</html>
