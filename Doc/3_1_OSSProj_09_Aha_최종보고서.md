@@ -33,6 +33,7 @@
 * 웹 접속 초기 화면
   ![image](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/assets/143998370/55faf73a-d8bd-4247-b10c-724118d117fb)
 * 작물/연도 선택란
+  
   ![image](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/assets/143998370/29402e51-e8a5-4bde-b316-bb902b70bd4d)
 * 지역 내 특정 위치 클릭 시 팝업창
   ![image](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/assets/143998370/d7fc9461-ef0e-4602-aab3-6961e4be837a)
