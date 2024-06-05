@@ -58,8 +58,8 @@ src/<br>
   - `asgi.py`: ASGI 호환 웹 서버에서 사용할 설정입니다.
 
 ### `++`
- - 'db.py': 
- - 'db.sqlite3'
+ - 'db.py': src외부 predict 파일을 이용해 db.sqlite3 생성. 
+ - 'db.sqlite3' django에서 제공하는 db 사용. 
  - 'Overview.md' : Src파일에 대한 전반적인 설명입니다.
 
 ## 실행 방법
