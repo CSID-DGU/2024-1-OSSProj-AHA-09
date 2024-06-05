@@ -5,30 +5,30 @@
 대부분의 코드는 원천 작성하였으며, views의 mapPrice 함수의 공시지가 활용api의 경우 api 제공 사이트인 v-world의 예시 코드를 수정하여 사용하였습니다. 예시코드를 이용해 이미지 파일을 만들어 사용자에게 제공하도록 수정하였습니다. 
 
 ## 폴더 구조
-src/
-├── manage.py
-├── map/
-│ ├── init.py
-│ ├── admin.py
-│ ├── apps.py
-│ ├── models.py
-│ ├── tests.py
-│ ├── urls.py
-│ ├── views.py
-│ └── templates
-│ │   ├──index.html
-| │   └──mapPrice.html
-│ └── myapp/
-│ └── base.html
-├── myWeb/
-│ ├── init.py
-│ ├── settings.py
-│ ├── urls.py
-│ ├── wsgi.py
-│ └── asgi.py
-├─ db.py
-├─ db.sqlite3
-├─ Overview.md
+src/<br>
+├── manage.py<br>
+├── map/<br>
+│ ├── init.py<br>
+│ ├── admin.py<br>
+│ ├── apps.py<br>
+│ ├── models.py<br>
+│ ├── tests.py<br>
+│ ├── urls.py<br>
+│ ├── views.py<br>
+│ └── templates<br>
+│    ├──index.html<br>
+|    └──mapPrice.html<br>
+│ └── myapp/<br>
+│ └── base.html<br>
+├── myWeb/<br>
+│ ├── init.py<br>
+│ ├── settings.py<br>
+│ ├── urls.py<br>
+│ ├── wsgi.py<br>
+│ └── asgi.py<br>
+├─ db.py<br>
+├─ db.sqlite3<br>
+├─ Overview.md<br>
 
 
 ## 디렉토리 및 파일 설명
@@ -65,4 +65,4 @@ src/
 ## 실행 방법
 
 1. **아래 주소로 접속**
-   ```http://34.47.70.11:8000/
+   `http://34.47.70.11:8000/`
