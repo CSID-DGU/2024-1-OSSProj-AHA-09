@@ -1,5 +1,6 @@
 # 프로젝트 명: 농작물 생산량 트렌드
 
+
 ## I. 프로젝트 수행팀 개요
 
 * 수행 학기:  2024-1
@@ -34,9 +35,17 @@
 
 #### 1.3 최종결과물  
 - http://34.47.70.11:8000/ 
-- *프로젝트를 통해 개발된 최종 결과물에 대한 설명을 기술*  
-- *그림 또는 사진을 제시하고 설명을 기술*  
-- *필요한 경우 중간제목을 추가 가능*  
+* 웹 접속 초기 화면
+
+  ![image](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/assets/143998370/55faf73a-d8bd-4247-b10c-724118d117fb)
+
+* 작물/연도 선택란
+  
+  ![image](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/assets/143998370/29402e51-e8a5-4bde-b316-bb902b70bd4d)
+
+* 지역 내 특정 위치 클릭 시 팝업창
+
+  ![image](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/assets/143998370/d7fc9461-ef0e-4602-aab3-6961e4be837a)
 
 #### 1.4 기대 효과  
 
@@ -73,6 +82,7 @@
 - [최종보고서](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/blob/main/Doc/3_1_OSSProj_09_Aha_최종보고서.md)
 - [회의록](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/blob/main/Doc/4_2_OSSProj_09_Aha_회의록.md)
 - [이슈관리](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/issues?q=is%3Aissue+is%3Aclosed)
+- [제품구성배포운영자료](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/blob/main/Doc/4_3_OSSProj_09_Aha_제품구성배포운영자료.md)
 
 
 #### 3.3 참고자료  
