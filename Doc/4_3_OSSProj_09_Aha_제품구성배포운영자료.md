@@ -22,9 +22,9 @@
 <pre>
   python3 -m venv venv
   source venv/bin/activate
-  ![image](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/assets/137899379/36f8c87a-3c59-4cbb-85d0-d76da62fba5d)<br>
-  ![image](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/assets/137899379/6ab2cc79-824c-45f1-b903-5b1d6d53cd30)<br>
 </pre>
+![image](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/assets/137899379/36f8c87a-3c59-4cbb-85d0-d76da62fba5d)<br>
+![image](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/assets/137899379/6ab2cc79-824c-45f1-b903-5b1d6d53cd30)<br>
 4. 필수 패키지 설치
 <pre>
   pip install django
