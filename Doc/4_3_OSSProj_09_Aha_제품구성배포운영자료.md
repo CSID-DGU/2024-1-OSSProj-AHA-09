@@ -15,6 +15,18 @@
 배포 절차
 1. GCP VM 인스턴스 생성
 2. 루트 디렉토리에 레포지토리 클론 (git clone https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09.git)
+3. Python 설치 및 환경변수 설정
+4. ~\venvs에 가상환경 생성 (python3 -m venv venv) 및 실행 (source venv/bin/activate)
+![image](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/assets/137899379/36f8c87a-3c59-4cbb-85d0-d76da62fba5d)
+![image](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/assets/137899379/6ab2cc79-824c-45f1-b903-5b1d6d53cd30)
+5. 필수 패키지 설치
+<div style="background-color: #f0f0f0; padding: 10px; border-radius: 5px;">
+  <p>pip install django</p>
+  <p>pip install gunicorn</p>
+  <p>sudo apt install nginx</p>
+</div>
+
+
 
 ## 3. 프로젝트 제품 운영 방법  
 
