@@ -30,6 +30,8 @@
   pip install django
   pip install gunicorn
   sudo apt install nginx
+  sudo apt install certbot
+  sudo apt install python3-certbot-nginx
 </pre>
 5. 정적 파일 모으기 (
 <pre>
@@ -92,8 +94,9 @@
   WantedBy=multi-user.target
 </pre>
 
-7. Gunicorn 서비스, Nginx 실행
+7. SSL 인증서 생성, Gunicorn 서비스, Nginx 실행
 <pre>
+  sudo certbot certonly --nginx
   sudo systemctl start gunicorn.servic
   sudo systemctl start nginx
 </pre>
