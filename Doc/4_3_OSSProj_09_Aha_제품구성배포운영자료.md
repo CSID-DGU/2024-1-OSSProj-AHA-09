@@ -1,18 +1,13 @@
 # A4.3 OSS 프로젝트 제품 구성, 배포 및 운영 자료  
 
 ## 1. 프로젝트 제품 구성
-
-- *프로젝트 제품의 구성과 배치 내역을 그림과 글로 설명*  
+GCP: 클라우드 인프라 제공
+Django: 웹 애플리케이션 프레임워크
+Gunicorn: WSGI HTTP 서버
+Nginx: 리버스 프록시 및 정적 파일 서버
+Let's Encrypt: 무료 SSL 인증서 제공
   
 ## 2. 프로젝트 제품 배포 방법  
-### 사용 기술
-- GCP: 클라우드 인프라 제공
-- Django: 웹 애플리케이션 프레임워크
-- Gunicorn: WSGI HTTP 서버
-- Nginx: 리버스 프록시 및 정적 파일 서버
-- Let's Encrypt: 무료 SSL 인증서 제공
-
-### 배포 절차
 1. GCP VM 인스턴스 생성
 2. 루트 디렉토리에 레포지토리 클론
 <pre>
@@ -37,7 +32,11 @@
 <pre>
   python manage.py collectstatic
 </pre>
-6. 파일 세팅<br>
+6. SSL 인증서 생성
+<pre>
+  sudo certbot certonly --nginx
+</pre>
+7. 파일 세팅<br>
 
 (~/venvs/myWeb.env)
 <pre>
@@ -93,20 +92,19 @@
   WantedBy=multi-user.target
 </pre>
 
-7. sites-available에 작성한 myWeb 파일 추가
+8. sites-available에 작성한 myWeb 파일 추가
 <pre>
   sudo ln -s /etc/nginx/sites-available/myWeb /etc/nginx/sites-enabled
 </pre>
 
-8. SSL 인증서 생성, Gunicorn 서비스, Nginx 실행
+## 3. 프로젝트 제품 운영 방법  
+1. Gunicorn 서비스, Nginx 실행
 <pre>
-  sudo certbot certonly --nginx
   sudo systemctl start gunicorn.servic
   sudo systemctl start nginx
 </pre>
 
-
-## 3. 프로젝트 제품 운영 방법  
-
-- *프로젝트 제품의 시연을 위한 환경구성 및 운영방법 설명*
-- *프로젝트 제품의 시연 시나리오 제시*  
+2. 웹 사이트 접속
+<pre>
+  https://osspcrops.store
+</pre>
