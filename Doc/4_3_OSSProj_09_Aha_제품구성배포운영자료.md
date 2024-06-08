@@ -28,7 +28,7 @@
   sudo apt install certbot
   sudo apt install python3-certbot-nginx
 </pre>
-5. 정적 파일 모으기 (
+5. 정적 파일 모으기
 <pre>
   python manage.py collectstatic
 </pre>
