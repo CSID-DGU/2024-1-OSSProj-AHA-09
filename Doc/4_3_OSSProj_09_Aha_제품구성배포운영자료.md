@@ -20,11 +20,11 @@
 ![image](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/assets/137899379/36f8c87a-3c59-4cbb-85d0-d76da62fba5d)<br>
 ![image](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/assets/137899379/6ab2cc79-824c-45f1-b903-5b1d6d53cd30)
 5. 필수 패키지 설치
-<div style="background-color: #f0f0f0; padding: 10px; border-radius: 5px;">
-  <p>pip install django</p>
-  <p>pip install gunicorn</p>
-  <p>sudo apt install nginx</p>
-</div>
+<pre>
+  pip install django
+  pip install gunicorn
+  sudo apt install nginx
+</pre>
 
 
 
