@@ -17,9 +17,6 @@
 
 * 지도교수 : 융합SW교육원 이길섭 교수님, 박효순 교수님
 
-* 팀 구성원 또는 활동 사진  
-    * *팀 자유 형식으로 작성*  
-
 ## II. 프로젝트 수행 결과  
 
 ### 1. 프로젝트 개요  
@@ -39,8 +36,8 @@
 * 작물,연도 선택란 / 지역 내 특정 위치 클릭 시 팝업창
 <img width="620" alt="Aha_map page" src="https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/assets/162420581/71ba659c-5d73-4c96-baca-7ab43cff5998">
 
-
-
+ - 메인페이지에 희망 작물, 희망 연도를 선택할 수 있도록 하며 선택 학목에 따른 전국적인 생상량 예측값에 대한 분포를 시각적으로 제공
+ - 지도에서 희망 지역 선택시 해당 행정구역의 생산량 예측값 제공하며 위도,경도에 따른 공시지가 정보를 함께 제공
 
 #### 1.4 기대 효과  
 
@@ -51,12 +48,12 @@
 ### 2. 프로젝트 수행 내용  
 
 #### 2.1 프로젝트 진행과정 
+- 프로젝트 WBS
+<img width="1223" alt="스크린샷 2024-06-08 오후 9 05 50" src="https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/assets/162420581/30eb13f3-eac0-4e47-93b8-e2ada9ea5d4a">
 
-[OSSP_WBS.pdf](https://github.com/user-attachments/files/15528554/OSSP_WBS.pdf)
 
-#### 2.2 프로젝트 구현내용  
-
-- *프로젝트 설계, 구현 등 구현과 관련된 내용을 기술*  
+#### 2.2 유스케이스 
+![Aha_usecase](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/assets/162420581/0e2508e7-5df4-4120-9bfa-bb673495fb64)
 
 ### 3. 프로젝트 자료  
 
@@ -71,41 +68,16 @@
 - [V-WORLD](https://www.vworld.kr/dtna/dtna_apiSvcFc_s001.do?apiNum=23)
 
 #### 3.2 프로젝트 주요 문서 
-
-- [수행계획서](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/blob/main/Doc/1_1_OSSProj_09_Aha_수행계획서.md)
-- [중간보고서](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/blob/main/Doc/2_1_OSSProj_09_Aha_중간보고서.md)
-- [최종보고서](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/blob/main/Doc/3_1_OSSProj_09_Aha_최종보고서.md)
-- [회의록](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/blob/main/Doc/4_2_OSSProj_09_Aha_회의록.md)
-- [이슈관리](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/issues?q=is%3Aissue+is%3Aclosed)
-- [제품구성배포운영자료](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/blob/main/Doc/4_3_OSSProj_09_Aha_제품구성배포운영자료.md)
+구분 | 내용
+------|-------|
+보고서 | [수행계획서](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/blob/main/Doc/1_1_OSSProj_09_Aha_수행계획서.md) [중간보고서](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/blob/main/Doc/2_1_OSSProj_09_Aha_중간보고서.md) [최종보고서](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/blob/main/Doc/3_1_OSSProj_09_Aha_최종보고서.md)
+발표자료 | [수행계획발표자료](https://github.com/HyunJong00/OSSProjHJL/blob/main/Doc/1_2_OSSProj_09_Aha_수행계획발표자료.pdf) [중간발표자료](https://github.com/HyunJong00/OSSProjHJL/blob/main/Doc/2_2_OSSProj_09_Aha_중간발표자료.pdf) [최종발표자료]()
+회의록 | [회의록](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/blob/main/Doc/4_2_OSSProj_09_Aha_회의록.md)
+이슈 | [이슈관리](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/issues?q=is%3Aissue+is%3Aclosed)
+배포운영 | [제품구성배포운영자료](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/blob/main/Doc/4_3_OSSProj_09_Aha_제품구성배포운영자료.md)
 
 
 #### 3.3 참고자료  
 
 * 날씨마루 : https://bd.kma.go.kr/kma2020/fs/productionSelect1.do?pageNum=5&menuCd=F050102000
 * USDA : https://www.nass.usda.gov/Charts_and_Maps/Crops_County/cr-pr.php
-  
-## Commit Convention
--   feat : 새로운 기능 추가
--   fix : 버그 수정
--   docs : 문서 수정
--   style : 코드 포맷팅, 세미콜론 누락, 코드 변경이 없는 경우
--   refactor: 코드 리펙토링
--   test: 테스트 코드, 리펙토링 테스트 코드 추가
--   chore : 빌드 업무 수정, 패키지 매니저 수정
-
-## 💡 PR Convetion
-
-| 아이콘 | 코드                       | 설명                     |
-| ------ | -------------------------- | ------------------------ |
-| 🎨     | :art                       | 코드의 구조/형태 개선    |
-| ⚡️    | :zap                       | 성능 개선                |
-| 🔥     | :fire                      | 코드/파일 삭제           |
-| 🐛     | :bug                       | 버그 수정                |
-| 🚑     | :ambulance                 | 긴급 수정                |
-| ✨     | :sparkles                  | 새 기능                  |
-| 💄     | :lipstick                  | UI/스타일 파일 추가/수정 |
-| ⏪     | :rewind                    | 변경 내용 되돌리기       |
-| 🔀     | :twisted_rightwards_arrows | 브랜치 합병              |
-| 💡     | :bulb                      | 주석 추가/수정           |
-| 🗃      | :card_file_box             | 데이버베이스 관련 수정   |
