@@ -19,68 +19,68 @@
 ![image](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/assets/137899379/36f8c87a-3c59-4cbb-85d0-d76da62fba5d)<br>
 ![image](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/assets/137899379/6ab2cc79-824c-45f1-b903-5b1d6d53cd30)
 4. 필수 패키지 설치
+
 5. 파일 세팅
-
-(~/venvs/myWeb.env)
-<pre>
-  DJANGO_SETTINGS_MODULE=myWeb.settings
-</pre>
-
-(/etc/nginx/sites-available/myWeb)
-<pre>
-  server {
-        listen 80;
-        server_name osspcrops.store;
-        rewrite        ^ https://$server_name$request_uri? permanent;
-  }
+  (~/venvs/myWeb.env)
+  <pre>
+    DJANGO_SETTINGS_MODULE=myWeb.settings
+  </pre>
   
-  server {
-          listen 443 ssl;
+  (/etc/nginx/sites-available/myWeb)
+  <pre>
+    server {
+          listen 80;
           server_name osspcrops.store;
+          rewrite        ^ https://$server_name$request_uri? permanent;
+    }
+    
+    server {
+            listen 443 ssl;
+            server_name osspcrops.store;
+    
+            ssl_certificate /etc/letsencrypt/live/osspcrops.store/fullchain.pem; # managed by Certbot
+            ssl_certificate_key /etc/letsencrypt/live/osspcrops.store/privkey.pem; # managed by Certbot
+            include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    
+            location = /favicon.ico { access_log off; log_not_found off; }
+    
+            location /static {
+                    alias /home/hj708951/2024-1-OSSProj-Aha-09/myWeb/static;
+            }
+    
+            location / {
+                    include proxy_params;
+                    proxy_pass http://osspcrops.store:8000;
+            }
+    }
+  </pre>
+  * 이후 sites-available에 작성한 myWeb 파일 추가 (sudo ln -s /etc/nginx/sites-available/myWeb /etc/nginx/sites-enabled)
   
-          ssl_certificate /etc/letsencrypt/live/osspcrops.store/fullchain.pem; # managed by Certbot
-          ssl_certificate_key /etc/letsencrypt/live/osspcrops.store/privkey.pem; # managed by Certbot
-          include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+  (/etc/systemd/system/gunicorn.service)
+  <pre>
+    [Unit]
+    Description=gunicorn daemon
+    After=network.target
+    
+    [Service]
+    User=hj708951
+    Group=hj708951
+    WorkingDirectory=/home/hj708951/2024-1-OSSProj-Aha-09/myWeb
+    EnvironmentFile=/home/hj708951/venvs/myWeb.env
+    ExecStart=/home/hj708951/venvs/venv/bin/gunicorn \
+            --workers 2 \
+            --bind 0:8000 \
+            myWeb.wsgi:application
+    
+    [Install]
+    WantedBy=multi-user.target
+  </pre>
   
-          location = /favicon.ico { access_log off; log_not_found off; }
-  
-          location /static {
-                  alias /home/hj708951/2024-1-OSSProj-Aha-09/myWeb/static;
-          }
-  
-          location / {
-                  include proxy_params;
-                  proxy_pass http://osspcrops.store:8000;
-          }
-  }
-</pre>
-* 이후 sites-available에 작성한 myWeb 파일 추가 (sudo ln -s /etc/nginx/sites-available/myWeb /etc/nginx/sites-enabled)
-
-(/etc/systemd/system/gunicorn.service)
-<pre>
-  [Unit]
-  Description=gunicorn daemon
-  After=network.target
-  
-  [Service]
-  User=hj708951
-  Group=hj708951
-  WorkingDirectory=/home/hj708951/2024-1-OSSProj-Aha-09/myWeb
-  EnvironmentFile=/home/hj708951/venvs/myWeb.env
-  ExecStart=/home/hj708951/venvs/venv/bin/gunicorn \
-          --workers 2 \
-          --bind 0:8000 \
-          myWeb.wsgi:application
-  
-  [Install]
-  WantedBy=multi-user.target
-</pre>
-
-6. Gunicorn 서비스, Nginx 실행
-<pre>
-  sudo systemctl start gunicorn.servic
-  sudo systemctl start nginx
-</pre>
+  6. Gunicorn 서비스, Nginx 실행
+  <pre>
+    sudo systemctl start gunicorn.servic
+    sudo systemctl start nginx
+  </pre>
 
 
 ## 3. 프로젝트 제품 운영 방법  
