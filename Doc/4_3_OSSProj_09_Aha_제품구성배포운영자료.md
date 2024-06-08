@@ -25,7 +25,60 @@
   pip install gunicorn
   sudo apt install nginx
 </pre>
+6. 파일 세팅
+(~/venvs/myWeb.env)
+<pre>
+  DJANGO_SETTINGS_MODULE=myWeb.settings
+</pre>
 
+(/etc/nginx/sites-available/myWeb)
+<pre>
+  server {
+        listen 80;
+        server_name osspcrops.store;
+        rewrite        ^ https://$server_name$request_uri? permanent;
+  }
+  
+  server {
+          listen 443 ssl;
+          server_name osspcrops.store;
+  
+          ssl_certificate /etc/letsencrypt/live/osspcrops.store/fullchain.pem; # managed by Certbot
+          ssl_certificate_key /etc/letsencrypt/live/osspcrops.store/privkey.pem; # managed by Certbot
+          include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+  
+          location = /favicon.ico { access_log off; log_not_found off; }
+  
+          location /static {
+                  alias /home/hj708951/2024-1-OSSProj-Aha-09/myWeb/static;
+          }
+  
+          location / {
+                  include proxy_params;
+                  proxy_pass http://osspcrops.store:8000;
+          }
+  }
+</pre>
+
+(/etc/systemd/system/gunicorn.service)
+<pre>
+  [Unit]
+  Description=gunicorn daemon
+  After=network.target
+  
+  [Service]
+  User=hj708951
+  Group=hj708951
+  WorkingDirectory=/home/hj708951/2024-1-OSSProj-Aha-09/myWeb
+  EnvironmentFile=/home/hj708951/venvs/myWeb.env
+  ExecStart=/home/hj708951/venvs/venv/bin/gunicorn \
+          --workers 2 \
+          --bind 0:8000 \
+          myWeb.wsgi:application
+  
+  [Install]
+  WantedBy=multi-user.target
+</pre>
 
 
 ## 3. 프로젝트 제품 운영 방법  
