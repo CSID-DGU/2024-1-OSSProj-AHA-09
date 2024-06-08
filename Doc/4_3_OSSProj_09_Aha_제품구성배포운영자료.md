@@ -6,6 +6,8 @@
 - Gunicorn: WSGI HTTP 서버
 - Nginx: 리버스 프록시 및 정적 파일 서버
 - Let's Encrypt: 무료 SSL 인증서 제공
+![image](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/assets/137899379/744714ae-5904-4cef-8c50-30d11d6af90b)
+
   
 ## 2. 프로젝트 제품 배포 방법  
 1. GCP VM 인스턴스 생성
