@@ -32,6 +32,7 @@
 
 #### 1.3 최종결과물  
 - https://osspcrops.store/
+- 시연 영상: https://www.youtube.com/watch?v=pHNJq1oRQkk&ab_channel=%ED%98%95%EC%A4%80%EC%9E%84
 * 웹 접속 초기 화면
 * 작물,연도 선택란 / 지역 내 특정 위치 클릭 시 팝업창
 <img width="620" alt="Aha_map page" src="https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/assets/162420581/71ba659c-5d73-4c96-baca-7ab43cff5998">
