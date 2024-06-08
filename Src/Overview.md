@@ -24,9 +24,9 @@ views의 mapPrice 함수의 공시지가 활용api의 경우 api 제공 사이�
   - `models.py`: predict폴더에 저장된 db를 정의합니다.
   - `tests.py`
   - `urls.py`: 애플리케이션의 URL 경로를 정의합니다. 어플리케이션의 패턴을 정의하였는데 작물선택, 지도표현, 공시지가 표현의 패턴을 저장하였습니다.
-  - `views.py`: 뷰 로직을 정의하는데 작물선택, 공시지가 api와 이미지 생성, 위도경도 이용의 내용을 포함하였습니다. 
-  - `templates/`: 
-      - `index.html`: 기본 템플릿으로 사용자가 원하는 정보를 설정할 수 있습니다. html, css, javascript 이용하여 코드작성 하였습니다. 
+  - **`views.py`: 뷰 로직을 정의하는데 작물선택, 공시지가 api와 이미지 생성, 위도경도 이용의 내용을 포함하였습니다.**
+  - `templates/`
+      - **`index.html`: 기본 템플릿으로 사용자가 원하는 정보를 설정할 수 있습니다. 블록다이어그램에 나타난 작물선택, 연도선택, 지역선택의 기본 내용이 이 파일에서 작성되었습니다.**
       - `mapPrice.html`: 팝업 템플릿으로 공시지가와 생산량 정보를 표현하며 코딩하였습니다.
 
 ### `myWeb/`
@@ -38,10 +38,10 @@ views의 mapPrice 함수의 공시지가 활용api의 경우 api 제공 사이�
   - `asgi.py`: ASGI 호환 웹 서버에서 사용할 설정입니다.
 
 ### `Scr`
- - 'db.py': src외부 predict 파일을 이용해 db.sqlite3 생성. 
- - 'db.sqlite3' django에서 제공하는 db 사용. 
- - 'Overview.md' : Src파일에 대한 전반적인 설명입니다.
- - .DS_Store
+ - `db.py`: src외부 predict 파일을 이용해 db.sqlite3 생성. 
+ - **`db.sqlite3`: django에서 제공하는 db 사용하여 데이터를 관리합니다.** 
+ - `Overview.md`: Src파일에 대한 전반적인 설명입니다.
+ - `.DS_Store`
  - `manage.py`: Django 프로젝트를 관리하기 위한 커맨드 라인 유틸리티입니다.
 
    
@@ -74,4 +74,4 @@ src/<br>
 ## 실행 방법
 **아래 주소로 접속합니다.**
    
-   http://34.47.70.11:8000/
+http://osspcrops.store/
