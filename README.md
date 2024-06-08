@@ -34,7 +34,7 @@
 - 한국의 농업지도를 배경으로 기후변화에 따라 변화하는 지역, 작물의 생산량을 예측하여 정보를 제공하는 서비스 개발을 목표로 함
 
 #### 1.3 최종결과물  
-- http://34.47.70.11:8000/ 
+- https://osspcrops.store/
 * 웹 접속 초기 화면
 
   ![image](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/assets/143998370/55faf73a-d8bd-4247-b10c-724118d117fb)
