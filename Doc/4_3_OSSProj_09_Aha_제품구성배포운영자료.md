@@ -72,7 +72,6 @@
           }
   }
 </pre>
-* 이후 sites-available에 작성한 myWeb 파일 추가 (sudo ln -s /etc/nginx/sites-available/myWeb /etc/nginx/sites-enabled)
 
 (/etc/systemd/system/gunicorn.service)
 <pre>
@@ -94,7 +93,12 @@
   WantedBy=multi-user.target
 </pre>
 
-7. SSL 인증서 생성, Gunicorn 서비스, Nginx 실행
+7. sites-available에 작성한 myWeb 파일 추가
+<pre>
+  sudo ln -s /etc/nginx/sites-available/myWeb /etc/nginx/sites-enabled
+</pre>
+
+8. SSL 인증서 생성, Gunicorn 서비스, Nginx 실행
 <pre>
   sudo certbot certonly --nginx
   sudo systemctl start gunicorn.servic
