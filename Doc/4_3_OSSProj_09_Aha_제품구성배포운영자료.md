@@ -1,11 +1,11 @@
 # A4.3 OSS 프로젝트 제품 구성, 배포 및 운영 자료  
 
 ## 1. 프로젝트 제품 구성
-GCP: 클라우드 인프라 제공
-Django: 웹 애플리케이션 프레임워크
-Gunicorn: WSGI HTTP 서버
-Nginx: 리버스 프록시 및 정적 파일 서버
-Let's Encrypt: 무료 SSL 인증서 제공
+- GCP: 클라우드 인프라 제공
+- Django: 웹 애플리케이션 프레임워크
+- Gunicorn: WSGI HTTP 서버
+- Nginx: 리버스 프록시 및 정적 파일 서버
+- Let's Encrypt: 무료 SSL 인증서 제공
   
 ## 2. 프로젝트 제품 배포 방법  
 1. GCP VM 인스턴스 생성
