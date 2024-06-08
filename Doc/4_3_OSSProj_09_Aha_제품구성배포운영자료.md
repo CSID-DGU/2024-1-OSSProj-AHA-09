@@ -5,14 +5,14 @@
 - *프로젝트 제품의 구성과 배치 내역을 그림과 글로 설명*  
   
 ## 2. 프로젝트 제품 배포 방법  
-사용 기술
+### 사용 기술
 - GCP: 클라우드 인프라 제공
 - Django: 웹 애플리케이션 프레임워크
 - Gunicorn: WSGI HTTP 서버
 - Nginx: 리버스 프록시 및 정적 파일 서버
 - Let's Encrypt: 무료 SSL 인증서 제공
 
-배포 절차
+### 배포 절차
 1. GCP VM 인스턴스 생성
 2. 루트 디렉토리에 레포지토리 클론 (git clone https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09.git)
 3. ~\venvs에 가상환경 생성 (python3 -m venv venv) 및 실행 (source venv/bin/activate)<br>
@@ -54,7 +54,7 @@
           }
   }
 </pre>
-이후 sites-available에 작성한 myWeb 파일 추가 (sudo ln -s /etc/nginx/sites-available/myWeb /etc/nginx/sites-enabled)
+* 이후 sites-available에 작성한 myWeb 파일 추가 (sudo ln -s /etc/nginx/sites-available/myWeb /etc/nginx/sites-enabled)
 
 (/etc/systemd/system/gunicorn.service)
 <pre>
@@ -76,7 +76,11 @@
   WantedBy=multi-user.target
 </pre>
 
-6. 
+6. Gunicorn 서비스, Nginx 실행
+<pre>
+  sudo systemctl start gunicorn.servic
+  sudo systemctl start nginx
+</pre>
 
 
 ## 3. 프로젝트 제품 운영 방법  
