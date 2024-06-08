@@ -18,24 +18,24 @@
 <pre>
   git clone https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09.git
 </pre>
-4. ~\venvs에 가상환경 생성 및 실행
+3. ~\venvs에 가상환경 생성 및 실행
 <pre>
   python3 -m venv venv
   source venv/bin/activate
 </pre>
 ![image](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/assets/137899379/36f8c87a-3c59-4cbb-85d0-d76da62fba5d)<br>
-![image](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/assets/137899379/6ab2cc79-824c-45f1-b903-5b1d6d53cd30)
-5. 필수 패키지 설치
+![image](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/assets/137899379/6ab2cc79-824c-45f1-b903-5b1d6d53cd30)<br>
+4. 필수 패키지 설치
 <pre>
   pip install django
   pip install gunicorn
   sudo apt install nginx
 </pre>
-6. 정적 파일 모으기
+5. 정적 파일 모으기 (
 <pre>
   python manage.py collectstatic
 </pre>
-8. 파일 세팅<br>
+6. 파일 세팅<br>
 
 (~/venvs/myWeb.env)
 <pre>
@@ -92,7 +92,7 @@
   WantedBy=multi-user.target
 </pre>
 
-8. Gunicorn 서비스, Nginx 실행
+7. Gunicorn 서비스, Nginx 실행
 <pre>
   sudo systemctl start gunicorn.servic
   sudo systemctl start nginx
