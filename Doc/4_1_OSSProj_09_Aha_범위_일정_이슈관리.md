@@ -1,7 +1,7 @@
 # A4.1 프로젝트 범위 / 일정 / 이슈 관리  
 
 ## 범위/일정 관리  
-![4_4_OSSProj_09_Aha_일정관리](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/assets/162420581/de36f966-0965-4482-96e8-da2d57ddd564)
+<img width="1223" alt="Aha_WBS" src="https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/assets/162420581/21eb0ea3-e8f5-49a7-9582-838de08e4c97">
 
 
 
