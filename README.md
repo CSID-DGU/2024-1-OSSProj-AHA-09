@@ -77,7 +77,7 @@
 구분 | 내용
 ------|-------|
 보고서 | [수행계획서](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/blob/main/Doc/1_1_OSSProj_09_Aha_수행계획서.md) [중간보고서](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/blob/main/Doc/2_1_OSSProj_09_Aha_중간보고서.md) [최종보고서](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/blob/main/Doc/3_1_OSSProj_09_Aha_최종보고서.md)
-발표자료 | [수행계획발표자료](https://github.com/HyunJong00/OSSProjHJL/blob/main/Doc/1_2_OSSProj_09_Aha_수행계획발표자료.pdf) [중간발표자료](https://github.com/HyunJong00/OSSProjHJL/blob/main/Doc/2_2_OSSProj_09_Aha_중간발표자료.pdf) [최종발표자료]()
+발표자료 | [수행계획발표자료](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/blob/main/Doc/1_2_OSSProj_09_Aha_수행계획발표자료.pdf) [중간발표자료](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/blob/main/Doc/2_2_OSSProj_09_Aha_중간발표자료.pdf) [최종발표자료](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/blob/main/Doc/3_2_OSSProj_09_Aha_최종발표자료.pdf)
 회의록 | [회의록](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/blob/main/Doc/4_2_OSSProj_09_Aha_회의록.md)
 이슈 | [이슈관리](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/issues?q=is%3Aissue+is%3Aclosed)
 배포운영 | [제품구성배포운영자료](https://github.com/CSID-DGU/2024-1-OSSProj-Aha-09/blob/main/Doc/4_3_OSSProj_09_Aha_제품구성배포운영자료.md)
